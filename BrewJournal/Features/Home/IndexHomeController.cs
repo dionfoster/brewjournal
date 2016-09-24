@@ -2,7 +2,7 @@
 
 namespace BrewJournal.Features.Home
 {
-    public class HomeController : Controller
+    public class IndexHomeController : Controller
     {
         public ActionResult Index()
         {

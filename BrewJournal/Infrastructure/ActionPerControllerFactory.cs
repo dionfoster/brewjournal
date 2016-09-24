@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
@@ -17,16 +16,29 @@ namespace BrewJournal.Infrastructure
 
         protected override IController GetControllerInstance(RequestContext context, Type controllerType)
         {
-            try
-            {
-                var controller = (IController)_container.Resolve(controllerType);
+            var featureController = GetActionEntityControllerType(context);
 
-                return controller;
-            }
-            catch (Exception)
-            {
-                throw new HttpException(404, $"The controller for path '{context.HttpContext.Request.Path}' could not be found.");
-            }
+            var controller = (IController) _container.Resolve(featureController);
+
+            return controller;
+        }
+
+        private static Type GetActionEntityControllerType(RequestContext context)
+        {
+            var routeData = context.RouteData;
+
+            var controllerName = routeData.GetRequiredString("controller");
+            var action = routeData.GetRequiredString("action");
+
+            var fullyQualifiedType = $"BrewJournal.Features.{controllerName}.{action}{controllerName}Controller";
+
+            var assembly = typeof(MvcApplication).Assembly;
+            var featureController = assembly.GetType(fullyQualifiedType);
+
+            if (featureController == null)
+                throw new Exception($"The controller type '{fullyQualifiedType}' for path '{context.HttpContext.Request.Path}' could not be found.");
+
+            return featureController;
         }
     }
 }

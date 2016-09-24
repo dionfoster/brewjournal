@@ -142,10 +142,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Features\AddBrew\AddBrewController.cs" />
-    <Compile Include="Features\AddBrew\Models\AddBrewViewModel.cs" />
+    <Compile Include="Features\Brew\AddBrewController.cs" />
+    <Compile Include="Features\Brew\AddBrewViewModel.cs" />
     <Compile Include="Infrastructure\AutofacContainerBuilder.cs" />
-    <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\Home\IndexHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,7 +192,7 @@
     <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Features\AddBrew\AddBrew.cshtml" />
+    <Content Include="Features\Brew\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,4 @@
-﻿namespace BrewJournal.Features.AddBrew.Models
+﻿namespace BrewJournal.Features.Brew
 {
     public class AddBrewViewModel
     {
