@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Features/Shared/_Layout.cshtml";
+}
+@model BrewJournal.Features.AddBrew.Models.AddBrewViewModel
+
+<h1 class="page-header">
+    Add Brew
+</h1>
+
+@using (Html.BeginForm("AddBrew", "AddBrew", FormMethod.Post, new { role = "form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+        <div class="">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            <p class="help-block">@Html.ValidationMessageFor(m => m.Name)</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="">
+            <button class="btn btn-primary">
+                Submit
+                <span class="glyphicon glyphicon-log-in"></span>
+            </button>
+        </div>
+    </div>
+}
