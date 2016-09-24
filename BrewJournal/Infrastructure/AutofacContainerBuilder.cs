@@ -1,13 +1,17 @@
 using Autofac;
 using Autofac.Integration.Mvc;
+using BrewJournal.EF;
 
 namespace BrewJournal.Infrastructure
 {
     public class AutofacContainerBuilder
     {
-        public IContainer BuildContainer()
+        public IContainer Build()
         {
             var builder = new ContainerBuilder();
+
+            builder.Register(x => new BrewContext())
+                .InstancePerLifetimeScope();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
