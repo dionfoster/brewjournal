@@ -14,7 +14,7 @@ namespace BrewJournal.Features.Brew
 
         public ActionResult Add()
         {
-            return View(new AddBrewViewModel {Name = "Proper controller!!!!"});
+            return View();
         }
 
         [HttpPost]
