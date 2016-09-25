@@ -63,6 +63,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.MVC5.6.2.1.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -158,13 +166,16 @@
     <Compile Include="EF\Mapping\BrewMapping.cs" />
     <Compile Include="Features\Brew\AddBrewController.cs" />
     <Compile Include="Features\Brew\AddBrewViewModel.cs" />
+    <Compile Include="Features\Brew\Validators\AddBrewViewModelValidator.cs" />
     <Compile Include="Infrastructure\AutofacContainerBuilder.cs" />
     <Compile Include="Features\Home\IndexHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\ActionPerControllerFactory.cs" />
-    <Compile Include="Infrastructure\FeatureViewLocationRazorViewEngine.cs" />
+    <Compile Include="Infrastructure\CustomMvcResolution\ActionPerControllerFactory.cs" />
+    <Compile Include="Infrastructure\CustomMvcResolution\FeatureViewLocationRazorViewEngine.cs" />
+    <Compile Include="Infrastructure\Validation\AutofacValidatorFactory.cs" />
+    <Compile Include="Infrastructure\Validation\FluentValidatorModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\DateTimeProvider.cs" />
   </ItemGroup>

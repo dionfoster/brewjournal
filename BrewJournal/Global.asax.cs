@@ -2,7 +2,11 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
+using Autofac.Integration.Mvc;
 using BrewJournal.Infrastructure;
+using BrewJournal.Infrastructure.CustomMvcResolution;
+using FluentValidation;
+using FluentValidation.Mvc;
 
 namespace BrewJournal
 {
@@ -16,9 +20,18 @@ namespace BrewJournal
 
             var container = AutofacContainerBuilder.Build();
 
+            SetAutofacDependecyResolverAsDefaultResolver(container);
+
             SetControllerFactoryToActionPerControllerFactory(container);
 
             SetViewEngineToFeatureFolderStructure();
+
+            SetFluentValidationAsModelValidator(container);
+        }
+
+        private static void SetAutofacDependecyResolverAsDefaultResolver(IContainer container)
+        {
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
         private void SetControllerFactoryToActionPerControllerFactory(IContainer container)
@@ -33,6 +46,15 @@ namespace BrewJournal
             ViewEngines.Engines.Clear();
 
             ViewEngines.Engines.Add(new FeatureViewLocationRazorViewEngine());
+        }
+
+        private static void SetFluentValidationAsModelValidator(IContainer container)
+        {
+            ModelValidatorProviders.Providers.Add(
+                new FluentValidationModelValidatorProvider(container.Resolve<IValidatorFactory>())
+                {
+                    AddImplicitRequiredValidator = false
+                });
         }
     }
 }

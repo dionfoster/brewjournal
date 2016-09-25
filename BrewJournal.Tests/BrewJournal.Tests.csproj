@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrewTests\CanAddABrew.cs" />
+    <Compile Include="BrewTests\CantAddDuplicateBrews.cs" />
     <Compile Include="ContainerFixture.cs" />
     <Compile Include="DatabaseFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

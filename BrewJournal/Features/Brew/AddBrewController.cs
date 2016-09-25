@@ -20,6 +20,9 @@ namespace BrewJournal.Features.Brew
         [HttpPost]
         public ActionResult Add(AddBrewViewModel model)
         {
+            if (!ModelState.IsValid)
+                return View(model);
+
             var brewToAdd = new Domain.Brew(model.Name);
 
             _context.Set<Domain.Brew>().Add(brewToAdd);

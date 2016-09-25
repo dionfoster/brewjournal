@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
 
-namespace BrewJournal.Infrastructure
+namespace BrewJournal.Infrastructure.CustomMvcResolution
 {
     public class ActionPerControllerFactory : DefaultControllerFactory
     {

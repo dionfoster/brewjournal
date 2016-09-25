@@ -1,6 +1,7 @@
 using Autofac;
 using Autofac.Integration.Mvc;
 using BrewJournal.EF;
+using BrewJournal.Infrastructure.Validation;
 
 namespace BrewJournal.Infrastructure
 {
@@ -12,6 +13,8 @@ namespace BrewJournal.Infrastructure
 
             builder.Register(x => new BrewContext())
                 .InstancePerLifetimeScope();
+
+            builder.RegisterModule<FluentValidatorModule>();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 

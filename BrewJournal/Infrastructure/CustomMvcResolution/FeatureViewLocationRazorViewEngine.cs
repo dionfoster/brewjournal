@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace BrewJournal.Infrastructure
+namespace BrewJournal.Infrastructure.CustomMvcResolution
 {
     public class FeatureViewLocationRazorViewEngine : RazorViewEngine
     {
