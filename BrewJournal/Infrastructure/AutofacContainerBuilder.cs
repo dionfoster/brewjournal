@@ -6,7 +6,7 @@ namespace BrewJournal.Infrastructure
 {
     public class AutofacContainerBuilder
     {
-        public IContainer Build()
+        public static IContainer Build()
         {
             var builder = new ContainerBuilder();
 

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Data.Common;
+using System.Data.Entity;
 using BrewJournal.Domain;
 
 namespace BrewJournal.EF
@@ -8,6 +9,10 @@ namespace BrewJournal.EF
         public DbSet<Brew> Brews { get; set; }
 
         public BrewContext() : base("BrewContext")
+        {
+        }
+
+        public BrewContext(DbConnection connection) : base(connection, false)
         {
         }
 

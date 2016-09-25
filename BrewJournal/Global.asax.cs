@@ -14,7 +14,7 @@ namespace BrewJournal
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            var container = new AutofacContainerBuilder().Build();
+            var container = AutofacContainerBuilder.Build();
 
             SetControllerFactoryToActionPerControllerFactory(container);
 

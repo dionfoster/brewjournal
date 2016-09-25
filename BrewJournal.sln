@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrewJournal", "BrewJournal\BrewJournal.csproj", "{D45F7977-A352-4851-B1E5-B269564A4E63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrewJournal.Tests", "BrewJournal.Tests\BrewJournal.Tests.csproj", "{CB484620-8CD4-4290-827A-B0D5A4267B9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D45F7977-A352-4851-B1E5-B269564A4E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D45F7977-A352-4851-B1E5-B269564A4E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D45F7977-A352-4851-B1E5-B269564A4E63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB484620-8CD4-4290-827A-B0D5A4267B9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB484620-8CD4-4290-827A-B0D5A4267B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB484620-8CD4-4290-827A-B0D5A4267B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB484620-8CD4-4290-827A-B0D5A4267B9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
