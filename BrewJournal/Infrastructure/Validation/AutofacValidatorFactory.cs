@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Web.Mvc;
+using Autofac;
 using FluentValidation;
 
 namespace BrewJournal.Infrastructure.Validation
 {
     public class AutofacValidatorFactory : IValidatorFactory
     {
+        private readonly IComponentContext _componentContext;
+
+        public AutofacValidatorFactory(IComponentContext componentContext)
+        {
+            _componentContext = componentContext;
+        }
+
         public IValidator<T> GetValidator<T>()
         {
             return (IValidator<T>)GetValidator(typeof(T));
@@ -17,7 +25,7 @@ namespace BrewJournal.Infrastructure.Validation
 
             try
             {
-                return (IValidator)DependencyResolver.Current.GetService(genericType);
+                return (IValidator)_componentContext.Resolve(genericType);
             }
             catch (Exception) { }
 

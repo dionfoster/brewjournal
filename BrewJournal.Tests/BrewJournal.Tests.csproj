@@ -119,9 +119,21 @@
     <Compile Include="BrewTests\CantAddDuplicateBrews.cs" />
     <Compile Include="ContainerFixture.cs" />
     <Compile Include="DatabaseFixture.cs" />
+    <Compile Include="IntegrationExampleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticDateTimeProvider.cs" />
     <Compile Include="SubcutaneousMvcTest.cs" />
+    <Compile Include="Testability\Browsing\BrowsingSession.cs" />
+    <Compile Include="Testability\Browsing\MvcUtils.cs" />
+    <Compile Include="Testability\Browsing\RequestResult.cs" />
+    <Compile Include="Testability\Browsing\SimulatedWorkerRequest.cs" />
+    <Compile Include="Testability\Hosting\AppDomainProxy.cs" />
+    <Compile Include="Testability\Hosting\AppHost.cs" />
+    <Compile Include="Testability\Hosting\SerializableDelegate.cs" />
+    <Compile Include="Testability\Interception\InterceptionFilter.cs" />
+    <Compile Include="Testability\Interception\InterceptionFilterProvider.cs" />
+    <Compile Include="Testability\Interception\LastRequestData.cs" />
+    <Compile Include="Testability\NameValueCollectionConversions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

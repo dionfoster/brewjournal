@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 using BrewJournal.EF;
 
 namespace BrewJournal.Features.Home
@@ -14,9 +17,29 @@ namespace BrewJournal.Features.Home
 
         public ActionResult Index()
         {
-            var brews = _context.Set<Domain.Brew>();
+            var brews = _context.Brews;
 
-            return View();
+            var brewViewModels = new BrewListViewModel
+            {
+                Brews = brews
+                    .Select(x => new BrewListItemViewModel
+                    {
+                        Name = x.Name
+                    })
+                    .ToList()
+            };  
+
+            return View(brewViewModels);
         }
+    }
+
+    public class BrewListViewModel
+    {
+        public IList<BrewListItemViewModel> Brews { get; set; }
+    }
+
+    public class BrewListItemViewModel
+    {
+        public string Name { get; set; }
     }
 }
