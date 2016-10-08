@@ -12,7 +12,7 @@ namespace BrewJournal.Tests.FullStackTests
             _appHost = AppHost.Simulate("BrewJournal");
         }
 
-        [Fact]
+        [Fact(Skip = "Effects actual data, not sure this is the way to go")]
         public void LogInProcess()
         {
             var addBrewUrl = "/Brew/Add";
