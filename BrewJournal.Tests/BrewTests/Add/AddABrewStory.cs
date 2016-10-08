@@ -1,7 +1,7 @@
 ﻿using TestStack.BDDfy;
 using Xunit;
 
-namespace BrewJournal.Tests.BrewTests
+namespace BrewJournal.Tests.BrewTests.Add
 {
     [Story(
         AsA = "As a brewer",

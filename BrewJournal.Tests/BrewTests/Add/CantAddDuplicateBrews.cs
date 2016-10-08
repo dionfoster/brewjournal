@@ -5,7 +5,7 @@ using BrewJournal.Features.Brew;
 using BrewJournal.Tests.Testability;
 using Shouldly;
 
-namespace BrewJournal.Tests.BrewTests
+namespace BrewJournal.Tests.BrewTests.Add
 {
     public class CantAddDuplicateBrews : SubcutaneousMvcTest<AddBrewController>
     {

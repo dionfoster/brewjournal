@@ -4,7 +4,7 @@ using BrewJournal.Features.Brew;
 using BrewJournal.Tests.Testability;
 using Shouldly;
 
-namespace BrewJournal.Tests.BrewTests
+namespace BrewJournal.Tests.BrewTests.Add
 {
     public class CanAddABrew : SubcutaneousMvcTest<AddBrewController>
     {

@@ -166,6 +166,7 @@
     <Compile Include="EF\Mapping\BrewMapping.cs" />
     <Compile Include="Features\Brew\AddBrewController.cs" />
     <Compile Include="Features\Brew\AddBrewViewModel.cs" />
+    <Compile Include="Features\Brew\RemoveBrewController.cs" />
     <Compile Include="Features\Brew\Validators\AddBrewViewModelValidator.cs" />
     <Compile Include="Infrastructure\AutofacContainerBuilder.cs" />
     <Compile Include="Features\Home\IndexHomeController.cs" />

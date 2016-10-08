@@ -71,12 +71,6 @@ namespace BrewJournal.Tests.Testability
             ActionResult = Controller.WithCallTo(action);
         }
 
-        [Fact]
-        public virtual void ExecuteScenario()
-        {
-            this.BDDfy();
-        }
-
         protected TDependency Resolve<TDependency>()
         {
             return _lifetimeScope.Resolve<TDependency>();
