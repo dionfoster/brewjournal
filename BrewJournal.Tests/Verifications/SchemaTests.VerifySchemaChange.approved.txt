@@ -1,0 +1,5 @@
+﻿create table [dbo].[Brews] (
+    [Id] [uniqueidentifier] not null default newid(),
+    [Name] [nvarchar](255) not null,
+    primary key ([Id])
+);
