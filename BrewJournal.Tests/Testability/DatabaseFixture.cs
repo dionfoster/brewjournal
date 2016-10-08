@@ -3,7 +3,7 @@ using System.Data.Common;
 using System.IO;
 using BrewJournal.EF;
 
-namespace BrewJournal.Tests
+namespace BrewJournal.Tests.Testability
 {
     public class DatabaseFixture : IDisposable
     {
@@ -15,7 +15,7 @@ namespace BrewJournal.Tests
             var testPath = Path.GetDirectoryName(typeof(DatabaseFixture).Assembly.CodeBase.Replace("file:///", ""));
 
             AppDomain.CurrentDomain.SetData("DataDirectory", testPath);
-                // For localdb connection string that uses |DataDirectory|
+            // For localdb connection string that uses |DataDirectory|
 
             using (var migrationsContext = new BrewContext())
             {
@@ -27,7 +27,7 @@ namespace BrewJournal.Tests
         {
             _parentContext = new BrewContext();
             _parentContext.Database.Connection.Open();
-                // This could be a simple SqlConnection if using sql express, but if using localdb you need a context so that EF creates the database if it doesn't exist (thanks EF!)
+            // This could be a simple SqlConnection if using sql express, but if using localdb you need a context so that EF creates the database if it doesn't exist (thanks EF!)
             _transaction = _parentContext.Database.Connection.BeginTransaction();
 
             SeedDbContext = GetNewDbContext();

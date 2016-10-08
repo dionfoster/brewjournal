@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Web.Routing;
 
-namespace BrewJournal.Tests.Testability
+namespace BrewJournal.Tests.Testability.Integration
 {
     public static class NameValueCollectionConversions
     {

@@ -1,7 +1,7 @@
 using System;
 using BrewJournal.System;
 
-namespace BrewJournal.Tests
+namespace BrewJournal.Tests.Testability
 {
     public class StaticDateTimeProvider : IDateTimeProvider
     {

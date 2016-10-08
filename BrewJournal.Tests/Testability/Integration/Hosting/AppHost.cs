@@ -4,10 +4,10 @@ using System.Reflection;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using BrewJournal.Tests.Testability.Browsing;
-using BrewJournal.Tests.Testability.Interception;
+using BrewJournal.Tests.Testability.Integration.Browsing;
+using BrewJournal.Tests.Testability.Integration.Interception;
 
-namespace BrewJournal.Tests.Testability.Hosting
+namespace BrewJournal.Tests.Testability.Integration.Hosting
 {
     /// <summary>
     /// Hosts an ASP.NET application within an ASP.NET-enabled .NET appdomain

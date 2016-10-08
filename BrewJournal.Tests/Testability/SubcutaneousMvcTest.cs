@@ -11,7 +11,7 @@ using TestStack.BDDfy;
 using TestStack.FluentMVCTesting;
 using Xunit;
 
-namespace BrewJournal.Tests
+namespace BrewJournal.Tests.Testability
 {
     public abstract class SubcutaneousMvcTest<TController> : IDisposable
         where TController : Controller

@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.SessionState;
 
-namespace BrewJournal.Tests.Testability.Interception
+namespace BrewJournal.Tests.Testability.Integration.Interception
 {
     /// <summary>
     /// A place to store information about each request as we capture it

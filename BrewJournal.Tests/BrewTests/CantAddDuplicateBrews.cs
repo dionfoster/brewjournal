@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using BrewJournal.Domain;
 using BrewJournal.Features.Brew;
+using BrewJournal.Tests.Testability;
 using Shouldly;
 
 namespace BrewJournal.Tests.BrewTests

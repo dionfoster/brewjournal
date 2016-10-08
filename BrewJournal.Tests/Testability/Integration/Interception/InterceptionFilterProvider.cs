@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace BrewJournal.Tests.Testability.Interception
+namespace BrewJournal.Tests.Testability.Integration.Interception
 {
     internal class InterceptionFilterProvider : IFilterProvider
     {

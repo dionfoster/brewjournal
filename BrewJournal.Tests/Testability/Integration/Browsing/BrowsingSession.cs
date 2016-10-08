@@ -4,9 +4,9 @@ using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.SessionState;
-using BrewJournal.Tests.Testability.Interception;
+using BrewJournal.Tests.Testability.Integration.Interception;
 
-namespace BrewJournal.Tests.Testability.Browsing
+namespace BrewJournal.Tests.Testability.Integration.Browsing
 {
     [Serializable]
     public class BrowsingSession

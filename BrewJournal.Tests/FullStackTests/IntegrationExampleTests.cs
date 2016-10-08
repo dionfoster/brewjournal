@@ -1,4 +1,4 @@
-﻿using BrewJournal.Tests.Testability.Hosting;
+﻿using BrewJournal.Tests.Testability.Integration.Hosting;
 using Xunit;
 
 namespace BrewJournal.Tests.FullStackTests

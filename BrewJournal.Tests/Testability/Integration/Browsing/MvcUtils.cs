@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace BrewJournal.Tests.Testability.Browsing
+namespace BrewJournal.Tests.Testability.Integration.Browsing
 {
     public static class MvcUtils
     {

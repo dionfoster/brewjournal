@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace BrewJournal.Tests.Testability.Hosting
+namespace BrewJournal.Tests.Testability.Integration.Hosting
 {
     /// <summary>
     /// Makes delegates serializable where possible

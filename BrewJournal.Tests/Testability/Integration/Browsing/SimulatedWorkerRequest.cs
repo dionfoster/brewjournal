@@ -6,7 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.Hosting;
 
-namespace BrewJournal.Tests.Testability.Browsing
+namespace BrewJournal.Tests.Testability.Integration.Browsing
 {
     internal class SimulatedWorkerRequest : SimpleWorkerRequest
     {

@@ -1,7 +1,7 @@
 using System.Web;
 using System.Web.Mvc;
 
-namespace BrewJournal.Tests.Testability.Browsing
+namespace BrewJournal.Tests.Testability.Integration.Browsing
 {
     /// <summary>
     /// Represents the result of a simulated request

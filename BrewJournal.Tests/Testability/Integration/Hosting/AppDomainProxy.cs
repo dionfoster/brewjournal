@@ -1,7 +1,7 @@
 ﻿using System;
-using BrewJournal.Tests.Testability.Browsing;
+using BrewJournal.Tests.Testability.Integration.Browsing;
 
-namespace BrewJournal.Tests.Testability.Hosting
+namespace BrewJournal.Tests.Testability.Integration.Hosting
 {
     /// <summary>
     /// Simply provides a remoting gateway to execute code within the ASP.NET-hosting appdomain

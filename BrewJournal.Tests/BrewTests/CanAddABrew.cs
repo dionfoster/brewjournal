@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using BrewJournal.Features.Brew;
+using BrewJournal.Tests.Testability;
 using Shouldly;
 
 namespace BrewJournal.Tests.BrewTests

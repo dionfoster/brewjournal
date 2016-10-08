@@ -4,7 +4,7 @@ using Autofac.Builder;
 using Autofac.Core.Lifetime;
 using BrewJournal.Infrastructure;
 
-namespace BrewJournal.Tests
+namespace BrewJournal.Tests.Testability
 {
     public static class ContainerFixture
     {
