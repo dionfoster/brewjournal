@@ -8,11 +8,11 @@ using BrewJournal.Tests.Testability.Interception;
 
 namespace BrewJournal.Tests.Testability.Browsing
 {
-	[Serializable]
+    [Serializable]
     public class BrowsingSession
     {
         public HttpSessionState Session { get; private set; }
-        public HttpCookieCollection Cookies { get; private set; }
+        public HttpCookieCollection Cookies { get; }
 
         public BrowsingSession()
         {
@@ -50,34 +50,38 @@ namespace BrewJournal.Tests.Testability.Browsing
             return ProcessRequest(url, HttpVerbs.Post, formNameValueCollection);
         }
 
-        private RequestResult ProcessRequest(string url, HttpVerbs httpVerb = HttpVerbs.Get, NameValueCollection formValues = null)
+        private RequestResult ProcessRequest(string url, HttpVerbs httpVerb = HttpVerbs.Get,
+            NameValueCollection formValues = null)
         {
             return ProcessRequest(url, httpVerb, formValues, null);
         }
 
-        private RequestResult ProcessRequest(string url, HttpVerbs httpVerb, NameValueCollection formValues, NameValueCollection headers)
+        private RequestResult ProcessRequest(string url, HttpVerbs httpVerb, NameValueCollection formValues,
+            NameValueCollection headers)
         {
             if (url == null) throw new ArgumentNullException("url");
 
             // Fix up URLs that incorrectly start with / or ~/
             if (url.StartsWith("~/"))
                 url = url.Substring(2);
-            else if(url.StartsWith("/"))
+            else if (url.StartsWith("/"))
                 url = url.Substring(1);
 
             // Parse out the querystring if provided
-            string query = "";
-            int querySeparatorIndex = url.IndexOf("?");
-            if (querySeparatorIndex >= 0) {
+            var query = "";
+            var querySeparatorIndex = url.IndexOf("?");
+            if (querySeparatorIndex >= 0)
+            {
                 query = url.Substring(querySeparatorIndex + 1);
                 url = url.Substring(0, querySeparatorIndex);
-            }                
+            }
 
             // Perform the request
             LastRequestData.Reset();
             var output = new StringWriter();
-            string httpVerbName = httpVerb.ToString().ToLower();
-            var workerRequest = new SimulatedWorkerRequest(url, query, output, Cookies, httpVerbName, formValues, headers);
+            var httpVerbName = httpVerb.ToString().ToLower();
+            var workerRequest = new SimulatedWorkerRequest(url, query, output, Cookies, httpVerbName, formValues,
+                headers);
             HttpRuntime.ProcessRequest(workerRequest);
 
             // Capture the output
@@ -91,24 +95,25 @@ namespace BrewJournal.Tests.Testability.Browsing
                 ResponseText = output.ToString(),
                 ActionExecutedContext = LastRequestData.ActionExecutedContext,
                 ResultExecutedContext = LastRequestData.ResultExecutedContext,
-                Response = LastRequestData.Response,
+                Response = LastRequestData.Response
             };
         }
 
         private void AddAnyNewCookiesToCookieCollection()
         {
-            if(LastRequestData.Response == null)
+            if (LastRequestData.Response == null)
                 return;
 
-            HttpCookieCollection lastResponseCookies = LastRequestData.Response.Cookies;
-            if(lastResponseCookies == null)
+            var lastResponseCookies = LastRequestData.Response.Cookies;
+            if (lastResponseCookies == null)
                 return;
 
-            foreach (string cookieName in lastResponseCookies) {
-                HttpCookie cookie = lastResponseCookies[cookieName];
+            foreach (string cookieName in lastResponseCookies)
+            {
+                var cookie = lastResponseCookies[cookieName];
                 if (Cookies[cookieName] != null)
                     Cookies.Remove(cookieName);
-                if((cookie.Expires == default(DateTime)) || (cookie.Expires > DateTime.Now))
+                if ((cookie.Expires == default(DateTime)) || (cookie.Expires > DateTime.Now))
                     Cookies.Add(cookie);
             }
         }

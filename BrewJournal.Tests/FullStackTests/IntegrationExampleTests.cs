@@ -1,15 +1,15 @@
-﻿using Xunit;
-using AppHost = BrewJournal.Tests.Testability.Hosting.AppHost;
+﻿using BrewJournal.Tests.Testability.Hosting;
+using Xunit;
 
-namespace BrewJournal.Tests
+namespace BrewJournal.Tests.FullStackTests
 {
     public class IntegrationExampleTests
     {
-        private readonly AppHost appHost;
+        private readonly AppHost _appHost;
 
         public IntegrationExampleTests()
         {
-            appHost = AppHost.Simulate("BrewJournal");
+            _appHost = AppHost.Simulate("BrewJournal");
         }
 
         [Fact]
@@ -17,7 +17,7 @@ namespace BrewJournal.Tests
         {
             var addBrewUrl = "/Brew/Add";
 
-            appHost.Start(browsingSession =>
+            _appHost.Start(browsingSession =>
             {
                 var addBrewResult = browsingSession.Post(addBrewUrl, new
                 {

@@ -13,8 +13,10 @@ namespace BrewJournal.Tests
         static DatabaseFixture()
         {
             var testPath = Path.GetDirectoryName(typeof(DatabaseFixture).Assembly.CodeBase.Replace("file:///", ""));
+
             AppDomain.CurrentDomain.SetData("DataDirectory", testPath);
                 // For localdb connection string that uses |DataDirectory|
+
             using (var migrationsContext = new BrewContext())
             {
                 migrationsContext.Database.Initialize(false); // Performs EF migrations

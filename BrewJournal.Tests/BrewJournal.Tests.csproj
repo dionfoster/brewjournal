@@ -115,11 +115,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrewTests\AddABrewStory.cs" />
     <Compile Include="BrewTests\CanAddABrew.cs" />
     <Compile Include="BrewTests\CantAddDuplicateBrews.cs" />
     <Compile Include="ContainerFixture.cs" />
     <Compile Include="DatabaseFixture.cs" />
-    <Compile Include="IntegrationExampleTests.cs" />
+    <Compile Include="FullStackTests\IntegrationExampleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticDateTimeProvider.cs" />
     <Compile Include="SubcutaneousMvcTest.cs" />

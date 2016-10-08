@@ -2,14 +2,9 @@
 using System.Threading.Tasks;
 using BrewJournal.Features.Brew;
 using Shouldly;
-using TestStack.BDDfy;
 
 namespace BrewJournal.Tests.BrewTests
 {
-    [Story(
-        AsA = "As a brewer",
-        IWant = "I want to add a new brew",
-        SoThat = "So that I can record my processes and recipes")]
     public class CanAddABrew : SubcutaneousMvcTest<AddBrewController>
     {
         private AddBrewViewModel _addBrewViewModel;

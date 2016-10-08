@@ -10,12 +10,13 @@ namespace BrewJournal.Tests.Testability.Browsing
 {
     internal class SimulatedWorkerRequest : SimpleWorkerRequest
     {
-        private HttpCookieCollection cookies;
+        private readonly HttpCookieCollection cookies;
         private readonly string httpVerbName;
         private readonly NameValueCollection formValues;
         private readonly NameValueCollection headers;
 
-        public SimulatedWorkerRequest(string page, string query, TextWriter output, HttpCookieCollection cookies, string httpVerbName, NameValueCollection formValues, NameValueCollection headers)
+        public SimulatedWorkerRequest(string page, string query, TextWriter output, HttpCookieCollection cookies,
+            string httpVerbName, NameValueCollection formValues, NameValueCollection headers)
             : base(page, query, output)
         {
             this.cookies = cookies;
@@ -36,7 +37,8 @@ namespace BrewJournal.Tests.Testability.Browsing
                 if (string.Equals(httpVerbName, "post", StringComparison.OrdinalIgnoreCase))
                     return "application/x-www-form-urlencoded";
 
-            switch (index) {
+            switch (index)
+            {
                 case 0x19:
                     return MakeCookieHeader();
                 default:
@@ -48,7 +50,7 @@ namespace BrewJournal.Tests.Testability.Browsing
 
         public override string GetUnknownRequestHeader(string name)
         {
-            if(headers == null)
+            if (headers == null)
                 return null;
             return headers[name];
         }
@@ -58,15 +60,15 @@ namespace BrewJournal.Tests.Testability.Browsing
             if (headers == null)
                 return null;
             var unknownHeaders = from key in headers.Keys.Cast<string>()
-                                 let knownRequestHeaderIndex = GetKnownRequestHeaderIndex(key)
-                                 where knownRequestHeaderIndex < 0
-                                 select new[] { key, headers[key] };
+                let knownRequestHeaderIndex = GetKnownRequestHeaderIndex(key)
+                where knownRequestHeaderIndex < 0
+                select new[] {key, headers[key]};
             return unknownHeaders.ToArray();
         }
 
         public override byte[] GetPreloadedEntityBody()
         {
-            if(formValues == null)
+            if (formValues == null)
                 return base.GetPreloadedEntityBody();
 
             var sb = new StringBuilder();
@@ -77,7 +79,7 @@ namespace BrewJournal.Tests.Testability.Browsing
 
         private string MakeCookieHeader()
         {
-            if((cookies == null) || (cookies.Count == 0))
+            if ((cookies == null) || (cookies.Count == 0))
                 return null;
             var sb = new StringBuilder();
             foreach (string cookieName in cookies)

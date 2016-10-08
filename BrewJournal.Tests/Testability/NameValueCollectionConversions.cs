@@ -29,8 +29,6 @@ namespace BrewJournal.Tests.Testability
                 {
                     nvc.Add(kvp.Key, kvp.Value.ToString());
                 }
-
-
             }
             return nvc;
         }
