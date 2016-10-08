@@ -13,6 +13,7 @@ namespace BrewJournal.Tests
         static ContainerFixture()
         {
             Container = AutofacContainerBuilder.Build();
+
             AppDomain.CurrentDomain.DomainUnload += (sender, args) => Container.Dispose();
         }
 

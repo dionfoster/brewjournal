@@ -64,6 +64,13 @@ namespace BrewJournal.Tests
             ActionResult = Controller.WithCallTo(action);
         }
 
+        protected void ExecuteControllerActionWithInvalidState(Expression<Func<TController, ActionResult>> action)
+        {
+            Controller.WithModelErrors();
+
+            ActionResult = Controller.WithCallTo(action);
+        }
+
         [Fact]
         public virtual void ExecuteScenario()
         {

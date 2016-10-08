@@ -1,9 +1,19 @@
-﻿@{
+﻿@using BrewJournal.Features.Home
+@{
     Layout = "~/Features/Shared/_Layout.cshtml";
 }
+
+@model BrewListViewModel
 
 <h1 class="page-header">
     Home
 </h1>
 
 Go @Html.ActionLink("Add a brew", "Add", "Brew")!!
+
+<ul>
+    @foreach (var brew in Model.Brews)
+    {
+        <li>@brew.Name</li>
+    }
+</ul>
