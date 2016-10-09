@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BrewJournal.EF;
@@ -23,6 +24,7 @@ namespace BrewJournal.Features.Home
                 Brews = brews
                     .Select(x => new BrewListItemViewModel
                     {
+                        Id = x.Id,
                         Name = x.Name
                     })
                     .ToList()
@@ -39,6 +41,7 @@ namespace BrewJournal.Features.Home
 
     public class BrewListItemViewModel
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }

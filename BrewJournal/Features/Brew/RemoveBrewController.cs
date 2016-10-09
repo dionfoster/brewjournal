@@ -20,12 +20,12 @@ namespace BrewJournal.Features.Brew
             var brewToRemove = _context.Brews.FirstOrDefault(x => x.Id == id);
 
             if (brewToRemove == null)
-                return View();
+                return RedirectToAction("Index", "Home");
 
             _context.Brews.Remove(brewToRemove);
             _context.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

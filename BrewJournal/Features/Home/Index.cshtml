@@ -5,15 +5,25 @@
 
 @model BrewListViewModel
 
+<style>
+    .m-b-10 {
+        margin-bottom: 10px;
+    }
+</style>
+
 <h1 class="page-header">
     Home
 </h1>
 
-Go @Html.ActionLink("Add a brew", "Add", "Brew")!!
+<div class="row m-b-10">Go @Html.ActionLink("Add a brew", "Add", "Brew")!!</div>
 
 <ul>
-    @foreach (var brew in Model.Brews)
+    @using (Html.BeginForm("Remove", "Brew", FormMethod.Post))
     {
-        <li>@brew.Name</li>
+        foreach (var brew in Model.Brews)
+        {
+            <li>@brew.Name <button type="submit" class="btn btn-primary btn-xs" formaction='@Url.Action("Remove", "Brew", new { Id = brew.Id })'><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></li>
+        }
     }
+    
 </ul>

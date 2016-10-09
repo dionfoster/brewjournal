@@ -134,6 +134,8 @@
     <Compile Include="BrewTests\Add\AddABrewStory.cs" />
     <Compile Include="BrewTests\Add\CanAddABrew.cs" />
     <Compile Include="BrewTests\Add\CantAddDuplicateBrews.cs" />
+    <Compile Include="BrewTests\Remove\CanOnlyRemoveABrewThatExists.cs" />
+    <Compile Include="BrewTests\Remove\CanRemoveABrew.cs" />
     <Compile Include="BrewTests\Remove\RemoveABrewStory.cs" />
     <Compile Include="Testability\ContainerFixture.cs" />
     <Compile Include="Testability\DatabaseFixture.cs" />
