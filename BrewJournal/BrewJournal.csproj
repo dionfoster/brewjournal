@@ -140,6 +140,14 @@
     <Content Include="Assets\font-awesome\css\font-awesome.min.css" />
     <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="BootStrapTemplate\blank-page.html" />
+    <Content Include="BootStrapTemplate\bootstrap-elements.html" />
+    <Content Include="BootStrapTemplate\bootstrap-grid.html" />
+    <Content Include="BootStrapTemplate\charts.html" />
+    <Content Include="BootStrapTemplate\forms.html" />
+    <Content Include="BootStrapTemplate\index-rtl.html" />
+    <Content Include="BootStrapTemplate\index.html" />
+    <Content Include="BootStrapTemplate\tables.html" />
     <Content Include="Global.asax" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
@@ -220,6 +228,8 @@
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Features\Brew\Add.cshtml" />
+    <Content Include="BootStrapTemplate\LICENSE" />
+    <Content Include="BootStrapTemplate\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
