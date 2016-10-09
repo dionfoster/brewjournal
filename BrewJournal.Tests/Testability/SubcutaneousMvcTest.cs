@@ -1,15 +1,17 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using ApprovalUtilities.Utilities;
 using Autofac;
 using BrewJournal.EF;
+using FluentValidation;
 using Http.TestLibrary;
-using TestStack.BDDfy;
 using TestStack.FluentMVCTesting;
-using Xunit;
 
 namespace BrewJournal.Tests.Testability
 {
@@ -34,10 +36,11 @@ namespace BrewJournal.Tests.Testability
                     .AsImplementedInterfaces()
                     .InstancePerTestRun());
 
-            var routes = new RouteCollection();
-            RouteConfig.RegisterRoutes(routes);
-
             _httpRequest = new HttpSimulator().SimulateRequest();
+
+            var routes = new RouteCollection();
+
+            RouteConfig.RegisterRoutes(routes);
 
             Controller = BuildController(routes);
         }
@@ -61,14 +64,46 @@ namespace BrewJournal.Tests.Testability
 
         protected void ExecuteControllerAction(Expression<Func<TController, ActionResult>> action)
         {
+            ValidateControllerAction(action);
+
             ActionResult = Controller.WithCallTo(action);
         }
 
-        protected void ExecuteControllerActionWithInvalidState(Expression<Func<TController, ActionResult>> action)
+        private void ValidateControllerAction(Expression<Func<TController, ActionResult>> action)
         {
-            Controller.WithModelErrors();
+            var controllerActionParameters = GetControllerActionParameters(action);
 
-            ActionResult = Controller.WithCallTo(action);
+            foreach (var parameter in controllerActionParameters)
+            {
+                var validator = GetValidatorForParameter(parameter);
+
+                var validationResult = validator?.Validate(parameter);
+
+                validationResult?.Errors?
+                    .ForEach(x => Controller.ModelState.AddModelError(x.PropertyName, x.ErrorMessage));
+            }
+        }
+
+        private static IEnumerable<object> GetControllerActionParameters(
+            Expression<Func<TController, ActionResult>> action)
+        {
+            var expressionArguments = ((MethodCallExpression) action.Body).Arguments;
+
+            var controllerActionParameters = expressionArguments
+                .Select(x => Expression.Convert(x, typeof(object))) // box the argument types
+                .Select(x => Expression.Lambda<Func<object>>(x, null).Compile()())
+                // then compile them to get the actual value
+                .ToList();
+
+            return controllerActionParameters;
+        }
+
+        private IValidator GetValidatorForParameter(object parameter)
+        {
+            var parameterType = parameter.GetType();
+            var genericType = typeof(IValidator<>).MakeGenericType(parameterType);
+
+            return (IValidator) _lifetimeScope.Resolve(genericType);
         }
 
         protected TDependency Resolve<TDependency>()

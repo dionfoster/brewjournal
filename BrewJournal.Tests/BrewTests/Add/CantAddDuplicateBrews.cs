@@ -20,7 +20,7 @@ namespace BrewJournal.Tests.BrewTests.Add
 
         public void WhenANewBrewIsCreated()
         {
-            ExecuteControllerActionWithInvalidState(c => c.Add(new AddBrewViewModel {Name = _existingBrew}));
+            ExecuteControllerAction(c => c.Add(new AddBrewViewModel {Name = _existingBrew}));
         }
 
         public async Task ThenOnlyOneBrewExists()

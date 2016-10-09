@@ -12,7 +12,7 @@ namespace BrewJournal.Tests.Verifications
         [UseReporter(typeof(DiffReporter))]
         public void VerifySchemaChange()
         {
-            var sqlScript = ((IObjectContextAdapter)WorkDbContext).ObjectContext.CreateDatabaseScript();
+            var sqlScript = ((IObjectContextAdapter) WorkDbContext).ObjectContext.CreateDatabaseScript();
 
             Approvals.Verify(sqlScript);
         }

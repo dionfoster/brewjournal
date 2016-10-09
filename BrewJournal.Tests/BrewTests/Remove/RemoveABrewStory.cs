@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using BrewJournal.Domain;
 using BrewJournal.Features.Brew;
-using TestStack.BDDfy;
 using BrewJournal.Tests.Testability;
 using Shouldly;
+using TestStack.BDDfy;
 using Xunit;
 
 namespace BrewJournal.Tests.BrewTests.Remove
@@ -39,7 +39,7 @@ namespace BrewJournal.Tests.BrewTests.Remove
 
         public void WhenRemovingTheCrapBrew()
         {
-            ExecuteControllerActionWithInvalidState(c => c.Remove(IdOfExistingBrew));
+            ExecuteControllerAction(c => c.Remove(IdOfExistingBrew));
         }
 
         public async Task ThenItShouldNoLongerBePresent()
