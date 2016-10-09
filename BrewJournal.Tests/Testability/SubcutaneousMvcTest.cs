@@ -59,19 +59,21 @@ namespace BrewJournal.Tests.Testability
 
         protected void ExecuteControllerAction(Expression<Func<TController, Task<ActionResult>>> action)
         {
+            ValidateControllerAction((MethodCallExpression)action.Body);
+
             ActionResult = Controller.WithCallTo(action);
         }
 
         protected void ExecuteControllerAction(Expression<Func<TController, ActionResult>> action)
         {
-            ValidateControllerAction(action);
+            ValidateControllerAction((MethodCallExpression)action.Body);
 
             ActionResult = Controller.WithCallTo(action);
         }
 
-        private void ValidateControllerAction(Expression<Func<TController, ActionResult>> action)
+        private void ValidateControllerAction(MethodCallExpression methodCallExpression)
         {
-            var controllerActionParameters = GetControllerActionParameters(action);
+            var controllerActionParameters = GetExpressionParameters(methodCallExpression);
 
             foreach (var parameter in controllerActionParameters)
             {
@@ -84,15 +86,13 @@ namespace BrewJournal.Tests.Testability
             }
         }
 
-        private static IEnumerable<object> GetControllerActionParameters(
-            Expression<Func<TController, ActionResult>> action)
+        private static IEnumerable<object> GetExpressionParameters(MethodCallExpression methodCallExpression)
         {
-            var expressionArguments = ((MethodCallExpression) action.Body).Arguments;
+            var expressionArguments = methodCallExpression.Arguments;
 
             var controllerActionParameters = expressionArguments
                 .Select(x => Expression.Convert(x, typeof(object))) // box the argument types
-                .Select(x => Expression.Lambda<Func<object>>(x, null).Compile()())
-                // then compile them to get the actual value
+                .Select(x => Expression.Lambda<Func<object>>(x, null).Compile()()) // then compile them to get the actual value
                 .ToList();
 
             return controllerActionParameters;
@@ -103,7 +103,12 @@ namespace BrewJournal.Tests.Testability
             var parameterType = parameter.GetType();
             var genericType = typeof(IValidator<>).MakeGenericType(parameterType);
 
-            return (IValidator) _lifetimeScope.Resolve(genericType);
+            if (_lifetimeScope.IsRegistered(genericType))
+            {
+                return (IValidator)_lifetimeScope.Resolve(genericType);
+            }
+
+            return null;
         }
 
         protected TDependency Resolve<TDependency>()
