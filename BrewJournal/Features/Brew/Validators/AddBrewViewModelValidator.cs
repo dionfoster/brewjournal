@@ -13,6 +13,10 @@ namespace BrewJournal.Features.Brew.Validators
             _brewContext = brewContext;
 
             RuleFor(x => x.Name)
+                .NotEmpty()
+                .WithMessage("Some stuff.");
+
+            RuleFor(x => x.Name)
                 .Must(BeAUniqueName)
                 .WithMessage("That brew name is already taken; please try another.");
         }
